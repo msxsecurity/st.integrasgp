@@ -18,8 +18,8 @@ st.write("---")
 
 with aba0:
     st.header("INTEGRASGP")
-   
     st.text("IntegraSGP: v.1.0.0")
+    
     with st.container():
         st.image("integra.jpg", use_container_width=True)
     
@@ -32,7 +32,7 @@ with aba1:
 
     #submenu aba1
 
-    submenuaba1 = st.radio("Escolha uma opção", ["Cadastro", "Cargo comissionado", "Movimentação", "Desligamento"])
+    submenuaba1 = st.radio("Escolha uma opção:", ["Cadastro", "Cargo comissionado", "Movimentação", "Desligamento"])
 
     #linha divisória
     st.write("---")
@@ -129,6 +129,12 @@ with aba5:
 with aba6:
     st.header("Tabelas")
 
+     #submenu aba6
+
+    submenuaba6 = st.radio("Escolha uma opção", ["Servidores", "Cargos", "Cargos/funções comissionadas", "Lotação", "Órgãos", "Tipo de movimentação", "Tipo de servidor"])
+
+    if submenuaba6 == "Tabelas":
+        st.subheader("Cargos")
 
 #Conteúdo aba7
 
