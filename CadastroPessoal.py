@@ -32,27 +32,30 @@ with aba1:
 
     #submenu aba1
 
-    submenuaba1 = st.radio("Escolha uma opção:", ["Cadastro", "Cargo comissionado", "Movimentação", "Desligamento"])
+    submenuaba1 = st.radio("Escolha uma opção:", ["Cargo efetivo", "Cargo função/comissionada", "Desligamento"])
 
     #linha divisória
     st.write("---")
         
-    if submenuaba1 == "Cadastro":
-        st.subheader("Consulta")
+    if submenuaba1 == "Cargo efetivo":
+        st.subheader("Cadastro de servidores")
 
         #criando as colunas
 
-        col1, col2, col3 = st.columns(3)
+        
+        col1, col2, col3, col4 = st.columns(4)
         with col1:
             st.button("Consultar")
         with col2:
             st.button("Incluir")
         with col3:
             st.button("Alterar")
-
-                        
-        consulta = st.text_input("Consulta")
+        with col4:
+            st.button("Excluir")
         
+        consulta = st.text_input("Consulta")
+                        
+               
         #linha divisória
         st.write("---")
 
@@ -89,21 +92,21 @@ with aba1:
             RaçaCor = st.text_input("RAÇA/COR")
             pcd = st.text_input("PCD")
             
-
-    if submenuaba1 == "Movimentação":
-        st.subheader("Movimentações internas e externas")
-        with st.expander("MOVIMENTAÇÃO INTERNA (ex: bim)"):
-            teste = st.text_input("XXXX")
-        with st.expander("CESSÃO/REQUISIÇÃO"):
-            teste = st.text_input("teste")
-        with st.expander("OUTROS ÓRGÃOS PARA A ANEEL (ex: cessão, requisição, movimentação força de trabalho)"):
-            teste = st.text_input("YYYYY")
-
-
+ 
 #Conteúdo aba2
 
 with aba2:
     st.header("Módulo de capacitação")
+
+    #submenu aba2
+
+    submenuaba2 = st.radio("Escolha uma opção:", ["PFA ABERTOS", "PFA FECHADOS", "Licença capacitação"])
+
+    #linha divisória
+    st.write("---")
+        
+    if submenuaba2 == "PFA ABERTOS":
+        st.subheader("XXXXXXXXXXXXX")
 
 
 #Conteúdo aba3
@@ -117,11 +120,37 @@ with aba3:
 with aba4:
     st.header("Módulo de planejamento e Gestão da força de trabalho")
 
+     #submenu aba4
+
+    submenuaba4 = st.radio("Escolha uma opção:", ["Movimentação", "DFT", "Terceirizados", "Estágio"])
+
+    #linha divisória
+    st.write("---")
+       
+    if submenuaba4 == "Movimentação":
+        st.subheader("Movimentações internas e externas")
+        with st.expander("MOVIMENTAÇÃO INTERNA (ex: bim)"):
+            teste = st.text_input("XXXX")
+        with st.expander("CESSÃO/REQUISIÇÃO"):
+            teste = st.text_input("teste")
+        with st.expander("OUTROS ÓRGÃOS PARA A ANEEL (ex: cessão, requisição, movimentação força de trabalho)"):
+            teste = st.text_input("YYYYY")
+
 
 #Conteúdo aba5
 
 with aba5:
     st.header("Módulo de remuneração e benefícios")
+
+     #submenu aba5
+
+    submenuaba5 = st.radio("Escolha uma opção:", ["Aposentadoria e pensão", "benefícios"])
+
+    #linha divisória
+    st.write("---")
+        
+    if submenuaba5 == "Aposentadoria e pensão":
+        st.subheader("teste1")
 
 
 #Conteúdo aba6
