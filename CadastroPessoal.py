@@ -17,10 +17,12 @@ st.write("---")
 #CONTEÚDO ABA0
 
 with aba0:
-    st.header("Página inicial")
-    #linha divisória
+    st.header("INTEGRASGP")
+   
+    st.text("IntegraSGP: v.1.0.0")
+    with st.container():
+        st.image("integra.jpg", use_container_width=True)
     
-    st.subheader("IntegraSGP: v.1.0.0")
 
 
 #CONTEÚDO ABA1
@@ -57,7 +59,7 @@ with aba1:
         st.subheader("Dados do servidor")
         nome = st.text_input("NOME")
         cpf = st.number_input("CPF")
-        email = st.text_input("e-mail")
+        email = st.text_input("E-MAIL INSTITUCIONAL")
         Matrícula_siape = st.number_input("Matrícula siape")
         Vinculo = st.text_input("VÍNCULO (ex: efetivo, comissionado, quadro específico)")
         cargo = st.text_input("CARGO (ex: Especialista, Analista, Técnico)")
@@ -72,12 +74,14 @@ with aba1:
             OrgãoEmpresa = st.text_input("ÓRGÃO/EXMPRESA (ex: ANEEL, INFRAERO)")
             IngressoANEEL = st.text_input("INGRESSO NA ANEEL")
             DataServicoPublico = st.text_input("INGRESSO NO SERVIÇO PÚBLICO")
-          
             pgd = st.text_input("MODALIDADE DE PGD")
             diretor = st.text_input("DIRETOR")
+
         with st.expander("Demais dados (PESSOAIS)"):
             identidade = st.text_input("IDENTIDADE")
             DataNascimento = st.text_input("DATA DE NASCIMENTO")
+            EmailPessoal = st.text_input("E-MAIL PESSOAL")
+            Telefone = st.text_input("TELEFONE")
             NomePai = st.text_input("NOME DO PAI")
             NomeMae = st.text_input("NOME DA MÃE")
             Endereço = st.text_input("ENDEREÇO")
@@ -86,9 +90,14 @@ with aba1:
             pcd = st.text_input("PCD")
             
 
-
-
-
+    if submenuaba1 == "Movimentação":
+        st.subheader("Movimentações internas e externas")
+        with st.expander("MOVIMENTAÇÃO INTERNA (ex: bim)"):
+            teste = st.text_input("XXXX")
+        with st.expander("CESSÃO/REQUISIÇÃO"):
+            teste = st.text_input("teste")
+        with st.expander("OUTROS ÓRGÃOS PARA A ANEEL (ex: cessão, requisição, movimentação força de trabalho)"):
+            teste = st.text_input("YYYYY")
 
 
 #Conteúdo aba2
