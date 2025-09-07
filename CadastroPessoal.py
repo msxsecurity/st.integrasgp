@@ -32,7 +32,7 @@ with aba1:
 
     #submenu aba1
 
-    submenuaba1 = st.radio("Escolha uma opção:", ["Cargo efetivo", "Cargo função/comissionada", "Desligamento"])
+    submenuaba1 = st.radio("Escolha uma opção:", ["Cargo efetivo", "Cargo função/comissionada", "Lotação", "Desligamento"])
 
     #linha divisória
     st.write("---")
