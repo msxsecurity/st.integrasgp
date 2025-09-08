@@ -184,14 +184,14 @@ with aba6:
     st.header("Tabelas")
 
     #linha divisória
-    st.write("---")
+    st.write("---")    
 
-     #submenu aba6
 
-    submenuaba6 = st.radio("Escolha uma opção", ["Servidores", "Cargos", "Cargos/funções comissionadas", "Unidades Organizacionais", "Órgãos", "Tipo de movimentação", "Tipo de servidor"])
-
-    if submenuaba6 == "Tabelas":
-        st.subheader("Cargos")
+    with st.expander("Tabelas básicas e cadastrais"):
+        submenuTABCAD = st.radio("Escolha uma opção:", ["Nacionalidade", "Naturalidade", "Formação Acadêmica"])
+    with st.expander("Tabelas institucionais"):
+        submenuTABINST = st.radio("Escolha uma opção:", ["Servidores", "Cargos", "Cargos/funções comissionadas", "Unidades Organizacionais", "Órgãos", "Tipo de movimentação", "Tipo de servidor", "Regime jurídico", "Desligamento"])
+ 
 
 #Conteúdo aba7
 
