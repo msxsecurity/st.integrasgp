@@ -30,6 +30,9 @@ with aba0:
 with aba1:
     st.header("Módulo de Informações funcionais")
 
+    #linha divisória
+    st.write("---")
+
     #submenu aba1
 
     submenuaba1 = st.radio("Escolha uma opção:", ["Cargo efetivo", "Cargo função/comissionada", "Lotação", "Desligamento"])
@@ -96,14 +99,39 @@ with aba1:
 #Conteúdo aba2
 
 with aba2:
-    st.header("Módulo de Carreira e desenvolvimento")
+    st.header("Módulo de carreira e desenvolvimento")
 
-    st.markdown("[Link para o sistema CAPACITA](https://www.sdfdsfdsffdsfdfsd.com)")
+    #linha divisória
+    st.write("---")
+
+     #submenu aba2
+
+    submenuaba2 = st.radio("Escolha uma opção:", ["Capacitação", "Desempenho", "Encarreiramento"])
+
+    #linha divisória
+    st.write("---")
+
+    if submenuaba2 == "Capacitação":
+        st.markdown("[Link para o sistema CAPACITA](https://www.sdfdsfdsffdsfdfsd.com)")
+    
 
 #Conteúdo aba3
 
 with aba3:
     st.header("Módulo de Saúde e Bem-estar")
+    
+    #linha divisória
+    st.write("---")
+
+     #submenu aba3
+
+    submenuaba3 = st.radio("Escolha uma opção:", ["Planos de saúde", "SIASS", "Ambulatório"])
+
+    #linha divisória
+    st.write("---")
+        
+    if submenuaba3 == "Planos de saúde":
+        st.subheader("teste1")
 
 
 #Conteúdo aba4
@@ -111,14 +139,17 @@ with aba3:
 with aba4:
     st.header("Módulo de Gestão da força de trabalho")
 
+    #linha divisória
+    st.write("---")
+
      #submenu aba4
 
-    submenuaba4 = st.radio("Escolha uma opção:", ["Movimentação", "DFT", "Terceirizados", "Estágio"])
+    submenuaba4 = st.radio("Escolha uma opção:", ["Movimentação interna e externa", "Dimensionamento da força de trabalho (DFT)", "Terceirização", "Estágio"])
 
     #linha divisória
     st.write("---")
        
-    if submenuaba4 == "Movimentação":
+    if submenuaba4 == "Movimentação interna e externa":
         st.subheader("Movimentações internas e externas")
         with st.expander("MOVIMENTAÇÃO INTERNA (ex: bim)"):
             teste = st.text_input("XXXX")
@@ -132,6 +163,9 @@ with aba4:
 
 with aba5:
     st.header("Módulo de remuneração e benefícios")
+
+    #linha divisória
+    st.write("---")
 
      #submenu aba5
 
@@ -149,9 +183,12 @@ with aba5:
 with aba6:
     st.header("Tabelas")
 
+    #linha divisória
+    st.write("---")
+
      #submenu aba6
 
-    submenuaba6 = st.radio("Escolha uma opção", ["Servidores", "Cargos", "Cargos/funções comissionadas", "Lotação", "Órgãos", "Tipo de movimentação", "Tipo de servidor"])
+    submenuaba6 = st.radio("Escolha uma opção", ["Servidores", "Cargos", "Cargos/funções comissionadas", "Unidades Organizacionais", "Órgãos", "Tipo de movimentação", "Tipo de servidor"])
 
     if submenuaba6 == "Tabelas":
         st.subheader("Cargos")
