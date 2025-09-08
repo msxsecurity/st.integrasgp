@@ -9,7 +9,7 @@ st.set_page_config(layout="wide")
 
     #Criando abas
 
-aba0, aba1, aba2, aba3, aba4, aba5, aba6, aba7 = st.tabs(["IntegraSGP", "Informações Funcionais", "Capacitação", "Saúde e Desempenho", "Planejamento e gestão da força de trabalho", "Remuneração e benefícios", "Tabelas", "Relatórios"])
+aba0, aba1, aba2, aba3, aba4, aba5, aba6, aba7 = st.tabs(["IntegraSGP", "Informações Funcionais", "Carreira e desenvolvimento", "Saúde e Bem-estar", "Gestão da força de trabalho", "Remuneração e benefícios", "Tabelas", "Relatórios"])
 
 #linha divisória
 st.write("---")
@@ -96,29 +96,20 @@ with aba1:
 #Conteúdo aba2
 
 with aba2:
-    st.header("Módulo de capacitação")
+    st.header("Módulo de Carreira e desenvolvimento")
 
-    #submenu aba2
-
-    submenuaba2 = st.radio("Escolha uma opção:", ["PFA ABERTOS", "PFA FECHADOS", "Licença capacitação"])
-
-    #linha divisória
-    st.write("---")
-        
-    if submenuaba2 == "PFA ABERTOS":
-        st.subheader("XXXXXXXXXXXXX")
-
+    st.markdown("[Link para o sistema CAPACITA](https://www.sdfdsfdsffdsfdfsd.com)")
 
 #Conteúdo aba3
 
 with aba3:
-    st.header("Módulo de saúde e desempenho")
+    st.header("Módulo de Saúde e Bem-estar")
 
 
 #Conteúdo aba4
 
 with aba4:
-    st.header("Módulo de planejamento e Gestão da força de trabalho")
+    st.header("Módulo de Gestão da força de trabalho")
 
      #submenu aba4
 
