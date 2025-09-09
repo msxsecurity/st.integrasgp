@@ -9,7 +9,7 @@ st.set_page_config(layout="wide")
 
     #Criando abas
 
-aba0, aba1, aba2, aba3, aba4, aba5, aba6, aba7 = st.tabs(["IntegraSGP", "Informações Funcionais", "Carreira e desenvolvimento", "Saúde e Bem-estar", "Gestão da força de trabalho", "Remuneração e benefícios", "Tabelas", "Relatórios"])
+aba0, aba1, aba2, aba3, aba4, aba5, aba6, aba7 = st.tabs(["**IntegraSGP**", "**Informações Funcionais**", "**Carreira e desenvolvimento**", "**Saúde e Bem-estar**", "**Gestão da força de trabalho**", "**Remuneração e benefícios**", "**Tabelas**", "**Relatórios**"])
 
 #linha divisória
 st.write("---")
@@ -48,31 +48,33 @@ with aba1:
         
         col1, col2, col3, col4 = st.columns(4)
         with col1:
-            st.button("Consultar")
+            st.button("**Consultar**")
         with col2:
-            st.button("Incluir")
+            st.button("**Incluir**")
         with col3:
-            st.button("Alterar")
+            st.button("**Alterar**")
         with col4:
-            st.button("Excluir")
+            st.button("**Excluir**")
         
-        consulta = st.text_input("Consulta")
+        consulta = st.text_input("**Consulta**")
                         
                
         #linha divisória
         st.write("---")
 
         st.subheader("Dados do servidor")
-        nome = st.text_input("NOME")
-        cpf = st.number_input("CPF")
-        email = st.text_input("E-MAIL INSTITUCIONAL")
-        Matrícula_siape = st.number_input("Matrícula siape")
-        Vinculo = st.text_input("VÍNCULO (ex: efetivo, comissionado, quadro específico)")
-        cargo = st.text_input("CARGO (ex: Especialista, Analista, Técnico)")
-        CargoFuncao = st.text_input("CARGO/FUNÇÃO COMISSIONADA (ex: CGE I, CA I, CGE IV, CCT V)")
-        função = st.text_input("FUNÇÃO (ex: Superintendente de gestão de pessoas)")
-        lotação = st.text_input("LOTAÇÃO")
-        GrupoGestao = st.text_input("GRUPO GESTÃO (ex: titular uorg, gerência, coordenação)")
+        nome = st.text_input("**NOME**")
+        cpf = st.number_input("**CPF**")
+        email = st.text_input("**E-MAIL INSTITUCIONAL**")
+        Matrícula_siape = st.number_input("**Matrícula siape**")
+        UnidadeOrganizacional = st.text_input("**Unidade Organizacional**")
+        Vinculo = st.text_input("**VÍNCULO (ex: efetivo, comissionado, quadro específico)**")
+        cargo = st.text_input("**CARGO (ex: Especialista, Analista, Técnico)**")
+        CargoFuncao = st.text_input("**CARGO/FUNÇÃO COMISSIONADA (ex: CGE I, CA I, CGE IV, CCT V)**")
+        função = st.text_input("**FUNÇÃO (ex: Superintendente de gestão de pessoas)**")
+        lotação = st.text_input("**LOTAÇÃO**")
+        GrupoGestao = st.text_input("**GRUPO GESTÃO (ex: titular uorg, gerência, coordenação)**")
+        ParticipantePGD = st.text_input("**Participante do PGD/Modalidade**")
 
         #Campos para expansão
 
