@@ -163,7 +163,7 @@ def filtros_info_funcionais():
                 
         
                 enviar = st.form_submit_button("Filtrar")
-                incluir = st.form_submit_button("Incluir")
+                
                 
             st.markdown('</div>', unsafe_allow_html=True)
 
@@ -175,6 +175,7 @@ def filtros_info_funcionais():
                 "cargo": cargo if cargo != "-- Selecione --" else "",
             }
 
+        
                 
 #*********************************************************************************************************************
 
@@ -194,29 +195,99 @@ def page_home():
 #CONTEÚDO PAGINA_INFOS_servidores
 
 def page_info_servidores():
-    st.header("Servidores")
+    st.header("Cadastro de Servidores")
     
     #linha divisória
     st.write("---")
 
-    # CHAMADA dos filtros (agora a função já existe)
+    ###################
+    # 1) Tabela "persistente" no app
+    if "serv_df" not in st.session_state:
+        st.session_state.serv_df = pd.DataFrame({
+            "Nome":["Ana Silva","Bruno Costa","Carla Nunes"],
+            "CPF":["11111111111","22222222222","33333333333"],
+            "UORG":["SGP","SFG","SGP"],
+            "Vínculo":["Efetivo","Comissionado","Efetivo"],
+            "Cargo":["Analista","Especialista","Técnico"],
+            "Cargo/Função comissionada":["CGE IV","CA I","CCT III"],
+            "Função":["Superintendente","Assessor","Coordenador"],
+            "Grupo Gestão":["Titular uorg","Coordenação","Gerência"],
+            "Participante PGD":["Sim","Não","Sim"],
+            "Modalidade PGD":["Parcial","Integral","Presencial"],
+            "Ações":["Editar/Ver/Salvar","Editar/Ver/Salvar","Editar/Ver/Salvar"],
+        })
+
+
+    # 2) Formulário de inclusão
+    st.subheader("Incluir servidor")
+    with st.expander("Incluir servidor", expanded=False):
+        nome  = st.text_input("**NOME**",  key="in_nome")
+        cpf   = st.text_input("**CPF**",   key="in_cpf")
+        email = st.text_input("**E-MAIL INSTITUCIONAL**", key="in_email")
+        matricula = st.text_input("**Matrícula siape**", key="in_matricula")
+        uorg  = st.text_input("**Unidade Organizacional**", key="in_uorg")
+        vinc  = st.text_input("**VÍNCULO (ex: efetivo, comissionado, quadro específico)**", key="in_vinc")
+        cargo = st.text_input("**CARGO (ex: Especialista, Analista, Técnico)**", key="in_cargo")
+        cargof = st.text_input("**CARGO/FUNÇÃO COMISSIONADA (ex: CGE I, CA I, CGE IV, CCT V)**", key="in_cargof")
+        func  = st.text_input("**FUNÇÃO (ex: Superintendente de gestão de pessoas)**", key="in_func")
+        lot   = st.text_input("**LOTAÇÃO**", key="in_lot")
+        grupo = st.text_input("**GRUPO GESTÃO (ex: titular uorg, gerência, coordenação)**", key="in_grupo")
+        pgd   = st.text_input("**Participante do PGD/Modalidade**", key="in_pgd")
+
+        if st.button("Incluir", type="primary"):
+            # validações básicas
+            if not nome or not cpf:
+                st.warning("Preencha pelo menos **Nome** e **CPF**.")
+            elif (st.session_state.serv_df["CPF"] == cpf).any():
+                st.error("Já existe um servidor com esse **CPF**.")
+            else:
+                novo = {
+                    "Nome": nome,
+                    "CPF": cpf,
+                    "UORG": uorg or "",
+                    "Vínculo": vinc or "",
+                    "Cargo": cargo or "",
+                    "Cargo/Função comissionada": cargof or "",
+                    "Função": func or "",
+                    "Grupo Gestão": grupo or "",
+                    "Participante PGD": pgd or "",
+                    "Modalidade PGD": "",  # preencha se tiver no formulário
+                }
+                st.session_state.serv_df = pd.concat(
+                    [st.session_state.serv_df, pd.DataFrame([novo])],
+                    ignore_index=True
+                )
+               
+                
+                ########################################
+                st.session_state.serv_df.to_csv("servidores.csv", index=False, encoding="utf-8")
+
+                                 # inclui/valida...
+                
+
+                ############################################
+
+                                
+                st.success(f"Servidor **{nome}** incluído.")
+                
+
+                # limpa campos
+                for k in [
+                    "in_nome","in_cpf","in_email","in_matricula","in_uorg","in_vinc",
+                    "in_cargo","in_cargof","in_func","in_lot","in_grupo","in_pgd"
+                ]:
+                    st.session_state[k] = ""
+                    
+                
+    
+
+    st.write("---")
+
+    # 3) Filtros
     clicou, filtros = filtros_info_funcionais()
 
-    # base de exemplo
-    df = pd.DataFrame({
-        "Nome":["Ana Silva","Bruno Costa","Carla Nunes"],
-        "CPF":["11111111111","22222222222","33333333333"],
-        "UORG":["SGP","SFG","SGP"],
-        "Vínculo":["Efetivo","Comissionado","Efetivo"],
-        "Cargo":["Analista","Especialista","Técnico"],
-        "Cargo/Função comissionada":["CGE IV","CA I","CCT III"],
-        "Função":["Superintendente","Assessor","Coordenador"],
-        "Grupo Gestão":["Titular uorg","Coordenação","Gerência"],
-        "Participante PGD":["Sim","Não", "teste"],
-        "Modalidade PGD":["Parcial","Integral", "Presencial"],
-    })
-
-     # 3) aplica filtros (quando clicar)  
+    # 4) Aplica filtros sobre a TABELA PERSISTIDA
+    df = st.session_state.serv_df.copy()
     q = df.copy()
     if clicou:
         if filtros["nome"]:
@@ -231,8 +302,16 @@ def page_info_servidores():
             q = q[q["Cargo"] == filtros["cargo"]]
         st.success(f"{len(q)} registro(s) encontrado(s).")
 
+    # 5) Exibe a tabela final (já com a inclusão)
     st.dataframe(q, use_container_width=True)
-     #submenu aba1
+
+    ####################
+    
+        
+    #linha divisória
+    st.write("---")
+
+
 
     
   
@@ -253,7 +332,16 @@ def page_carreira():
 
 def page_saude():
     st.header("Saúde e Bem-estar")
-    st.write("Conteúdo da página…")
+    #linha divisória
+    st.write("---")
+
+    st.radio("Escolha uma opção:", ["Planos de saúde", "SIASS", "Ambulatório"])
+
+    #linha divisória
+    st.write("---")
+      
+    
+
 
 
 
@@ -261,7 +349,15 @@ def page_saude():
 
 def page_gestao_forca():
     st.header("Gestão da força de trabalho")
-    st.write("Conteúdo da página…")
+     #linha divisória
+    st.write("---")
+
+    st.radio("Escolha uma opção:", ["Movimentação interna e externa", "Dimensionamento da força de trabalho (DFT)", "Terceirização", "Estágio"])
+
+    #linha divisória
+    st.write("---")
+
+   
 
 
 
